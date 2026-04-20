@@ -34,6 +34,15 @@ void halfCircle(float centerX, float centerY, float radius)
 }
 
 
+void sun()
+{
+    glPushMatrix();
+    glColor3f(1,1,0);
+    circle(300,650,35);
+    glPopMatrix();
+}
+
+
 //  ROAD FUNCTION
 
 void road()
@@ -671,6 +680,80 @@ void building()
 }
 
 
+void circleM(int centerX, int centerY, int radius)
+{
+    glBegin(GL_POLYGON);
+    for(int i = 0; i < 360; i++)
+    {
+        float pi = 3.1416;
+        float A  = (i*2*pi)/180 ;
+        float r  = radius;
+        float x = r * cos(A);
+        float y = r * sin(A);
+        glVertex2f(x + centerX, y + centerY );
+    }
+    glEnd();
+}
+
+
+void cloud1()
+{
+    glPushMatrix();
+
+    glColor3f(1.0f, 1.0f, 1.0f);
+
+//cloud-1
+    circleM(50,650,15);
+    circleM(70,660,15);
+    circleM(90,650,15);
+    circleM(110,645,15);
+    circleM(70,640,15);
+    circleM(90,640,15);
+
+    glPopMatrix();
+
+}
+
+
+//cloud-2
+
+
+void cloud2()
+{
+    glPushMatrix();
+
+    glColor3f(1.0f, 1.0f, 1.0f);
+    circleM(500,650,20);
+    circleM(510,670,20);
+    circleM(530,640,20);
+    circleM(560,645,20);
+    circleM(545,670,20);
+
+    glPopMatrix();
+}
+
+
+//cloud-3
+
+void cloud3()
+{
+    glPushMatrix();
+
+    glColor3f(1.0f, 1.0f, 1.0f);
+    circleM(700,650,20);
+    circleM(710,670,20);
+    circleM(730,650,15);
+    circleM(755,645,15);
+    circleM(745,670,20);
+    circleM(770,670,15);
+
+    glPopMatrix();
+
+}
+
+
+
+
 //  DISPLAY FUNCTION
 
 void display()
@@ -680,6 +763,10 @@ void display()
 
     building();
     road();
+    cloud1();
+    cloud2();
+    cloud3();
+    sun();
 
     glutSwapBuffers();
 }
